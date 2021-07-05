@@ -1,0 +1,8 @@
+.subnet-form-wrapper {
+    display: none;
+    margin-top: 30px;
+}
+
+.subnet-form-wrapper .input-group {
+    width: 100%;
+}

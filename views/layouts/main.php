@@ -40,6 +40,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Список Mac-адресов', 'url' => ['/mac/list/']],
             ['label' => 'Генерация случайного Mac-адреса', 'url' => ['/mac/generate/']],
+            ['label' => 'Выгрузка Mac-адресов', 'url' => ['/mac/export/']],
             ['label' => 'Home', 'url' => ['/site/index']],
         ],
     ]);

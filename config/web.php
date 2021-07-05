@@ -10,6 +10,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@docs'  => '@app/web/docs',
     ],
     'components' => [
         'request' => [
@@ -55,6 +56,8 @@ $config = [
             ],
             'rules' => [
                 '/' => 'site/index',
+                '<controller:\w+>/<action:exportAll>' => '<controller>/export-all',
+                '<controller:\w+>/<action:exportSubnet>' => '<controller>/export-subnet',
                 '<controller:\w+>/<action:(\w+)>' => '<controller>/<action>',
                 '<controller:\w+>/<action:(\w+)><ip:>' => '<controller>/<action>',
                 'POST <controller:mac>/<action:switch>' => '<controller>/<action>',
