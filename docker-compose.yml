@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  home.random-generator-client.server:
+    image: nginx:alpine
+    container_name: home.random-generator-client.server
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./.dev/nginx/nginx.conf:/etc/nginx/nginx.conf
+    environment:
+      - VIRTUAL_HOST=generator-client.loc
+    networks:
+      - default
+      - reverse-proxy
+
+  home.random-generator-client.fpm:
+    image: ruslandev89/php74-fpm-bitrix
+    container_name: home.random-generator-client.fpm
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./.dev/php/php.ini:/etc/php/7.4/fpm/php.ini
+      - ./.dev/php/php.ini:/etc/php/7.4/cli/php.ini
+    networks:
+      - default
+      - mysql
+      - memcached
+
+networks:
+  default:
+    name: home.random-generator-client
+  mysql:
+    external: true
+  memcached:
+    external: true
+  reverse-proxy:
+    external: true
