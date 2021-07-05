@@ -141,17 +141,18 @@ class MacController extends Controller
 
         $ipIds = ArrayHelper::getColumn($responseData, 'id');
         $macAddresses = $this->getMacListByIpIds($ipIds);
-        $fileName = Yii::getAlias('@docs') . '/export_all_mac_addresses_by_subnet.csv';
+        $fileName =  '/export_all_mac_addresses_by_subnet.csv';
+        $filePath = Yii::getAlias('@docs') . $fileName;
 
-        $this->saveToCsv($macAddresses, $fileName);
+        $this->saveToCsv($macAddresses, $filePath);
 
-        return Yii::$app->response->sendFile($fileName);
+        return $fileName;
     }
 
     private function saveToCsv($macAddresses, $fileName)
     {
         try {
-            $header = '\xEF\xBB\xBF ID; Mac; Status; IP; \n';
+            $header = "\xEF\xBB\xBFID; Mac; Status; IP; \n";
 
             // Записываем заголовок в начало файла
             file_put_contents($fileName, $header);
@@ -160,8 +161,8 @@ class MacController extends Controller
             $startLine = 0;
 
             foreach ($macAddresses as $macAddress) {
-                $status = $macAddress->status ? 'Активен': 'Не активен';
-                $exportRows .= $macAddress->id . '; ' . $macAddress->name . '; ' . $status . '; ' . $macAddress->ip . ' \n';
+                $status = $macAddress->status ? "Активен": "Не активен";
+                $exportRows .= $macAddress->id . "; " . $macAddress->name . "; " . $status . "; " . $macAddress->ip . " \n";
 
                 if($startLine++ % 50 == 0){
                     // Сохраняем каждые 50 строк
