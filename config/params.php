@@ -7,6 +7,6 @@ return [
 
     'apiMacUrl' => 'http://api.mac-generator.ml/v1',    // Хост для доступа к API
 
-    // 'apiMacUrl' => 'http://locahhost:8000/v1',       // Локальный хост для доступа к API
+    // 'apiMacUrl' => 'http://localhost:8000/v1',       // Локальный хост для доступа к API
     // 'apiMacUrl' => 'http://generator-server.loc/v1', // Локальный хост для доступа к API
 ];
