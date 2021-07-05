@@ -54,8 +54,10 @@ $config = [
                 'collapseSlashes' => true,
             ],
             'rules' => [
+                '/' => 'site/index',
                 '<controller:\w+>/<action:(\w+)>' => '<controller>/<action>',
                 '<controller:\w+>/<action:(\w+)><ip:>' => '<controller>/<action>',
+                'POST <controller:mac>/<action:switch>' => '<controller>/<action>',
             ],
         ],
     ],
