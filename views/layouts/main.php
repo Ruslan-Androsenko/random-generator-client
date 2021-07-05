@@ -38,6 +38,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'Список Mac-адресов', 'url' => ['/mac/list/']],
+            ['label' => 'Генерация случайного Mac-адреса', 'url' => ['/mac/generate/']],
             ['label' => 'Home', 'url' => ['/site/index']],
         ],
     ]);

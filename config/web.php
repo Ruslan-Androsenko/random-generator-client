@@ -54,6 +54,8 @@ $config = [
                 'collapseSlashes' => true,
             ],
             'rules' => [
+                '<controller:\w+>/<action:(\w+)>' => '<controller>/<action>',
+                '<controller:\w+>/<action:(\w+)><ip:>' => '<controller>/<action>',
             ],
         ],
     ],
