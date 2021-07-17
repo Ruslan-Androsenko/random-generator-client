@@ -17,6 +17,8 @@ services:
     image: ruslandev89/php74-fpm-bitrix
     container_name: home.random-generator-client.fpm
     working_dir: /app
+    extra_hosts:
+      host.docker.internal: host-gateway
     volumes:
       - ./:/app
       - ./.dev/php/php.ini:/etc/php/7.4/fpm/php.ini
